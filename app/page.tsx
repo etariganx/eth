@@ -5,18 +5,11 @@ import { useState } from "react";
 export default function Home() {
   const [search, setSearch] = useState("");
   const [selectedCoin, setSelectedCoin] = useState("");
-  const [categories, setCategories] = useState<string[]>([]);
   const [analysis, setAnalysis] = useState<any>(null);
 
   const handleSearch = () => {
     if (!search) return;
-
-    const coin = search.toUpperCase();
-    setSelectedCoin(coin);
-
-    if (!categories.includes(coin)) {
-      setCategories([...categories, coin]);
-    }
+    setSelectedCoin(search.toUpperCase());
   };
 
   const handleUpdate = () => {
@@ -36,26 +29,29 @@ export default function Home() {
       technical: "Trend bullish minor. Price above MA10 & MA30.",
       fundamental: "No major macro event. Market relatively stable.",
       conclusion: "Bias long during pullback.",
-      entry: "Entry: near support zone",
-      sl: "SL: -2%",
-      tp: "TP: +4%",
+      entry: "Entry near support zone",
+      sl: "SL -2%",
+      tp: "TP +4%",
     });
   };
 
   return (
     <div style={{ fontFamily: "Arial", padding: "40px" }}>
-      <h1 style={{ textAlign: "center" }}>Daily Update Trading Journal</h1>
+      <h1 style={{ textAlign: "center" }}>
+        Daily Update Trading Journal
+      </h1>
 
-      <hr style={{ margin: "20px 0" }} />
-
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
         <input
-          placeholder="Search Coin / Token"
+          placeholder="Search Coin"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{ padding: "10px", width: "250px" }}
         />
-        <button onClick={handleSearch} style={{ padding: "10px 20px", marginLeft: "10px" }}>
+        <button
+          onClick={handleSearch}
+          style={{ padding: "10px 20px", marginLeft: "10px" }}
+        >
           Search
         </button>
       </div>
@@ -90,13 +86,6 @@ export default function Home() {
           <p>{analysis.tp}</p>
         </div>
       )}
-
-      <footer style={{ marginTop: "80px", textAlign: "center" }}>
-        <hr />
-        <p>
-          © 2026 enchone | <a href="https://google.com">Website</a>
-        </p>
-      </footer>
     </div>
   );
 }
