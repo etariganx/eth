@@ -21,23 +21,28 @@ export default function DailyUpdateTradingJournal() {
   };
 
   const handleUpdate = () => {
-    const now = new Date();
-    const formatted = `${selectedCoin}-${now
-      .toLocaleDateString("en-GB")
-      .replace(/\//g, "-")}-${now
-      .toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
-      .replace(":", "-")}`;
+  const now = new Date();
 
-    setAnalysis({
-      title: formatted,
-      technical: "Auto technical analysis generated based on indicators configuration.",
-      fundamental: "Latest macro & on-chain sentiment placeholder.",
-      conclusion: "Potential bullish continuation. Entry near support.",
-      entry: "Entry: Market / Pullback",
-      sl: "Stop Loss: -2%",
-      tp: "Take Profit: +4%"
-    });
-  };
+  const formatted = `${selectedCoin}-${now
+    .toLocaleDateString("en-GB")
+    .replace(/\//g, "-")}-${now
+    .toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+    .replace(":", "-")}`;
+
+  setAnalysis({
+    title: formatted,
+    technical: "Auto technical analysis generated based on indicators configuration.",
+    fundamental: "Latest macro & on-chain sentiment placeholder.",
+    conclusion: "Potential bullish continuation. Entry near support.",
+    entry: "Entry: Market / Pullback",
+    sl: "Stop Loss: -2%",
+    tp: "Take Profit: +4%",
+  });
+};
+
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
